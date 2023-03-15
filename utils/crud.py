@@ -25,7 +25,7 @@ def increase_referrer_points(db: Session, referral_id: str):
 
 
 def create_user(db: Session, user: schemas.UserCreate, referrer_id: str):
-    lowercase_address = address.lower()
+    lowercase_address = user.address.lower()
     db_user = models.User(referral_id=user.referral_id, referrer_id=referrer_id,
                           email=user.email, address=lowercase_address, points=10)
     db.add(db_user)
